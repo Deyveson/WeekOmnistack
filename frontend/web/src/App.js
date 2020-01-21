@@ -1,26 +1,107 @@
-import React, { useState } from 'react';
+import React, {useEffect} from 'react';
 
-// Conceitos Basicos de React 
-// Componente: Bloco isolado de HTML, CSS e JS, o qual não interfere no restante da aplicação
-// Propriedade: Informações que um componente Pai passa para o filho 
-// Estado: Informações mantidas pelo componente (Lembrar: Imutalidade)
-
-// 'useState' função do react para deixa as propriedades reativas no html 
+import './global.css';
+import './App.css';
+import './Sidebar.css';
+import './Main.css';
 
 function App() {
-
-  const [counter, setCounter] = useState(0);
-  // utilizando o conceito de desistruturação JavaScript
-
-  function incrementCounter(){
-    setCounter(counter + 1)
-  }
-
+  useEffect(() => {
+    navigator.geolocation.getCurrentPosition(
+      (position) => {
+        console.log(position)
+      },
+      (err) => {
+        console.log(err)
+      },
+      {
+        timeout: 30000,
+      }
+    )
+  },[]);
   return (
-    <>
-      <h1> Contador: {counter}</h1>
-      <button onClick={incrementCounter}>+</button>
-    </>
+    <div id="app">
+      <aside>
+        <strong>Cadastrar</strong>
+        <form>
+          <div className="input-block">
+            <label htmlFor="github_username">Usuário do GitHub</label>
+            <input name="github_username" id="github_username"></input>
+          </div>
+
+          <div className="input-block">
+            <label htmlFor="techs">Tecnologias</label>
+            <input name="techs" id="techs"></input>
+          </div>
+
+          <div className="input-group">
+            <div className="input-block">
+              <label htmlFor="latitude">Latitude</label>
+              <input name="latitude" id="latitude"></input>
+            </div>
+
+            <div className="input-block">
+              <label htmlFor="longitude">Longitude</label>
+              <input name="longitude" id="longitude"></input>
+            </div>
+          </div>
+
+          <button type="submit">Salvar</button>
+        </form>
+      </aside>
+      <main>
+        <ul>
+          <li className = "dev-item">
+            <header>
+              <img src="https://avatars1.githubusercontent.com/u/35642316?s=460&v=4" alt="Deyveson Willian" ></img>
+              <div className="user-info">
+                <strong> Deyveson Willian </strong>
+                <span> ReactJS, React Native, Node.js</span>
+              </div>
+           </header>
+           <p> Desenvolvedor FullStack e Apaixonado por tecnologia e desenvolvimento </p>
+           <a href="https://github.com/Deyveson">Acessar perfil no Github</a>
+          </li>
+
+          <li className = "dev-item">
+            <header>
+              <img src="https://avatars1.githubusercontent.com/u/35642316?s=460&v=4" alt="Deyveson Willian" ></img>
+              <div className="user-info">
+                <strong> Deyveson Willian </strong>
+                <span> ReactJS, React Native, Node.js</span>
+              </div>
+           </header>
+           <p> Desenvolvedor FullStack e Apaixonado por tecnologia e desenvolvimento </p>
+           <a href="https://github.com/Deyveson">Acessar perfil no Github</a>
+          </li>
+
+          <li className = "dev-item">
+            <header>
+              <img src="https://avatars1.githubusercontent.com/u/35642316?s=460&v=4" alt="Deyveson Willian" ></img>
+              <div className="user-info">
+                <strong> Deyveson Willian </strong>
+                <span> ReactJS, React Native, Node.js</span>
+              </div>
+           </header>
+           <p> Desenvolvedor FullStack e Apaixonado por tecnologia e desenvolvimento </p>
+           <a href="https://github.com/Deyveson">Acessar perfil no Github</a>
+          </li>
+
+          <li className = "dev-item">
+            <header>
+              <img src="https://avatars1.githubusercontent.com/u/35642316?s=460&v=4" alt="Deyveson Willian" ></img>
+              <div className="user-info">
+                <strong> Deyveson Willian </strong>
+                <span> ReactJS, React Native, Node.js</span>
+              </div>
+           </header>
+           <p> Desenvolvedor FullStack e Apaixonado por tecnologia e desenvolvimento </p>
+           <a href="https://github.com/Deyveson">Acessar perfil no Github</a>
+          </li>
+        </ul>
+
+      </main>
+    </div>
   );
 
 }
